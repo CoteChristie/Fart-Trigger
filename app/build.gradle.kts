@@ -11,16 +11,26 @@ android {
         applicationId = "com.cote.farttrigger"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        // Each GitHub build gets a higher number so it installs as an update
+        versionCode = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInt()
+        versionName = "1.${System.getenv("GITHUB_RUN_NUMBER") ?: "0"}"
         ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
+    }
+
+    // One fixed key, so every new build can install over the old one
+    signingConfigs {
+        create("fixed") {
+            storeFile = file("farttrigger.jks")
+            storePassword = "farttrigger"
+            keyAlias = "farttrigger"
+            keyPassword = "farttrigger"
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            // Signed with the debug key so the APK installs straight away.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("fixed")
         }
     }
     compileOptions {
