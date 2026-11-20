@@ -227,7 +227,7 @@ class MainActivity : Activity() {
 
     private fun refreshSoundLabel() {
         val custom = Prefs.customSound(this)
-        soundText.text = if (custom == null) "Random built-in farts (5 kinds)" else "My sound: ${fileName(Uri.parse(custom))}"
+        soundText.text = if (custom == null) "Random built-in farts (8 kinds)" else "My sound: ${fileName(Uri.parse(custom))}"
     }
 
     private fun fileName(uri: Uri): String = try {

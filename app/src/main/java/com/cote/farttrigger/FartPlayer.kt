@@ -23,8 +23,8 @@ class FartPlayer(private val context: Context) {
     init {
         pool.setOnLoadCompleteListener { _, id, status -> if (status == 0) loaded.add(id) }
         ids = listOf(
-            R.raw.fart_classic, R.raw.fart_quick, R.raw.fart_long,
-            R.raw.fart_squeaker, R.raw.fart_sputter
+            R.raw.fart_classic, R.raw.fart_quick, R.raw.fart_long, R.raw.fart_squeaker,
+            R.raw.fart_sputter, R.raw.fart_wet, R.raw.fart_rumbler, R.raw.fart_question
         ).map { pool.load(context, it, 1) }
     }
 
@@ -37,7 +37,7 @@ class FartPlayer(private val context: Context) {
         var i = ready.indices.random()
         if (ready.size > 1 && i == lastIndex) i = (i + 1) % ready.size
         lastIndex = i
-        val pitch = 0.85f + Math.random().toFloat() * 0.3f   // a little variety
+        val pitch = 0.92f + Math.random().toFloat() * 0.16f   // a little variety
         pool.play(ready[i], 1f, 1f, 1, 0, pitch)
     }
 

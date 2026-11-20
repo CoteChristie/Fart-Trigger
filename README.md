@@ -31,3 +31,9 @@ Open this folder in Android Studio, let it sync, plug in your phone (with USB de
 - `FartPlayer.kt`: plays the sounds
 - `ModelManager.kt`: one-time model download
 - `res/raw/*.wav`: the built-in farts
+
+## Sound credits
+
+The built-in farts are made with a Python port of the CompuFart physical model
+by Alex M. Fink (MIT License, https://github.com/alexmfink/compufart).
+To regenerate them: `python3 tools/render.py app/src/main/res/raw` (needs numpy, scipy, numba).

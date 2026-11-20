@@ -91,7 +91,7 @@
             android:id="@+id/soundText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Random built-in farts" />
+            android:text="Random built-in farts (8 kinds)" />
 
         <LinearLayout
             android:layout_width="match_parent"
